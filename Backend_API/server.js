@@ -22,15 +22,22 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5001
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('MongoDB connected successfully')
-
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`)
+if (process.env.NODE_ENV !== 'production') {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log('MongoDB connected successfully')
+  
+      app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`)
+      })
     })
-  })
-  .catch((error) => {
-    console.error('MongoDB connection failed:', error.message)
-  })
+    .catch((error) => {
+      console.error('MongoDB connection failed:', error.message)
+    })
+} else {
+  // For Vercel Serverless
+  mongoose.connect(process.env.MONGO_URI)
+}
+
+module.exports = app
