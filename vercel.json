@@ -13,22 +13,18 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/Backend_API/server.js"
+      "source": "/api/(.*)",
+      "destination": "/Backend_API/server.js"
     },
     {
-      "src": "/(assets/.*)",
-      "dest": "/Frontend/$1"
+      "source": "/assets/(.*)",
+      "destination": "/Frontend/assets/$1"
     },
     {
-      "src": "/(favicon.ico|vite.svg)",
-      "dest": "/Frontend/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/Frontend/index.html"
+      "source": "/(.*)",
+      "destination": "/Frontend/$1"
     }
   ]
 }
