@@ -1,6 +1,6 @@
 const express = require('express')
-const Paper = require('../../Database/models/Paper')
-const aiService = require('../../AI_Integration/aiService')
+const Paper = require('../Database/models/Paper')
+const aiService = require('../aiService')
 const router = express.Router()
 
 // GET /api/papers
