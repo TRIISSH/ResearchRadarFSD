@@ -51,7 +51,7 @@ router.post('/:id/summarize', async (req, res) => {
     res.json({ summary: text })
   } catch (error) {
     console.error("Gemini Error:", error)
-    res.status(500).json({ message: 'Error generating summary', error: error.message })
+    res.status(500).json({ message: `Error generating summary: ${error.message}` })
   }
 })
 
